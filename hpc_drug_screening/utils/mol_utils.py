@@ -1,9 +1,17 @@
 """
 Molecular Utilities
 Functions for processing SMILES strings and molecular graphs.
+
+WARNING: This module contains PLACEHOLDER implementations for demonstration.
+For production use, you MUST implement proper RDKit-based molecular processing:
+- Use rdkit.Chem.MolFromSmiles() for SMILES parsing
+- Extract real atom features (atomic number, hybridization, aromaticity, etc.)
+- Extract bond features (bond type, conjugation, ring membership, etc.)
+- Compute proper molecular descriptors
 """
 
 from typing import List, Optional, Tuple
+import warnings
 
 import torch
 from torch_geometric.data import Data
@@ -13,11 +21,16 @@ def smiles_to_graph(smiles: str) -> Optional[Data]:
     """
     Convert a SMILES string to a PyTorch Geometric graph.
     
-    Note: This is a placeholder. In production, use RDKit for proper conversion:
-        1. Parse SMILES with rdkit.Chem.MolFromSmiles()
-        2. Extract atom features (atomic number, degree, etc.)
-        3. Extract bond information for edges
-        4. Create PyTorch Geometric Data object
+    ⚠️  WARNING: PLACEHOLDER IMPLEMENTATION ⚠️
+    This returns dummy random data for demonstration purposes only.
+    
+    In production, implement proper conversion using RDKit:
+        from rdkit import Chem
+        from rdkit.Chem import AllChem
+        
+        mol = Chem.MolFromSmiles(smiles)
+        # Extract atom features, bond information
+        # Create proper PyTorch Geometric Data object
     
     Args:
         smiles: SMILES string representation of molecule
@@ -25,17 +38,20 @@ def smiles_to_graph(smiles: str) -> Optional[Data]:
     Returns:
         PyTorch Geometric Data object or None if invalid
     """
-    # TODO: Implement actual SMILES to graph conversion using RDKit
-    # Placeholder implementation
+    # Issue warning on first call
+    warnings.warn(
+        "Using placeholder SMILES->Graph conversion with random data. "
+        "Implement proper RDKit-based conversion for production!",
+        UserWarning,
+        stacklevel=2
+    )
+    
     try:
-        # Dummy graph with random features
-        num_nodes = min(len(smiles), 50)  # Approximate based on SMILES length
-        num_edges = max(num_nodes - 1, 1) * 2  # Approximate edges
+        # Dummy graph with random features (NOT suitable for production)
+        num_nodes = min(len(smiles), 50)
+        num_edges = max(num_nodes - 1, 1) * 2
         
-        # Random node features (128-dim)
         x = torch.randn(num_nodes, 128)
-        
-        # Random edge indices (undirected graph)
         edge_index = torch.randint(0, num_nodes, (2, num_edges))
         
         return Data(x=x, edge_index=edge_index)

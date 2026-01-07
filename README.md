@@ -4,6 +4,8 @@
 
 A scalable, distributed system for performing GNN inference on billions of molecular structures (SMILES) for drug discovery applications. Built with PyTorch Geometric and MPI for maximum throughput on HPC clusters.
 
+> ⚠️ **Important**: This is a **skeleton/template** project demonstrating the distributed architecture. The SMILES-to-graph conversion uses placeholder implementations. For production use, you must implement proper molecular processing using RDKit and real feature extraction.
+
 ## 🚀 Features
 
 - **Master-Worker Architecture**: Efficient task distribution using MPI (Message Passing Interface)

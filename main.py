@@ -380,20 +380,31 @@ def process_chunk(
     """
     predictions = []
     
-    # NOTE: In a real implementation, you would:
-    # 1. Convert SMILES to molecular graphs using RDKit
-    # 2. Create PyTorch Geometric Data objects
-    # 3. Batch graphs using DataLoader
-    # 4. Run inference in batches
+    # ============================================================================
+    # WARNING: PLACEHOLDER IMPLEMENTATION
+    # ============================================================================
+    # This is a SKELETON implementation. In production, you MUST implement:
+    # 1. Convert SMILES to molecular graphs using RDKit:
+    #    from rdkit import Chem
+    #    from rdkit.Chem import AllChem
+    # 2. Extract molecular features (atom types, bonds, etc.)
+    # 3. Create PyTorch Geometric Data objects with proper node/edge features
+    # 4. Batch graphs using DataLoader
+    # 5. Run actual inference through the model
+    # ============================================================================
+    
+    logger.warning(
+        "Using placeholder SMILES processing - "
+        "returning dummy predictions. Implement actual SMILES->Graph conversion!"
+    )
     
     # Placeholder: return dummy predictions
-    # This is where you'd integrate actual SMILES->Graph conversion
     with torch.no_grad():
         for i in range(0, len(smiles_list), batch_size):
             batch_smiles = smiles_list[i:i + batch_size]
             
-            # TODO: Convert SMILES to graphs and run through model
-            # For now, return dummy predictions
+            # TODO: Implement actual SMILES->Graph conversion and inference
+            # This is where you'd integrate RDKit and PyTorch Geometric
             batch_predictions = [0.5] * len(batch_smiles)
             predictions.extend(batch_predictions)
     
@@ -428,7 +439,15 @@ def write_results(
 
 
 def main():
-    """Main entry point."""
+    """Main entry point.
+    
+    WARNING: This is a SKELETON implementation demonstrating the distributed
+    architecture. The SMILES->Graph conversion uses placeholder code that
+    returns dummy predictions. For production use, you must implement:
+    - RDKit-based SMILES parsing and feature extraction
+    - PyTorch Geometric graph construction
+    - Actual model inference on molecular graphs
+    """
     args = parse_args()
     
     # Initialize MPI
