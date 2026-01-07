@@ -1,11 +1,9 @@
-"""
-Example SLURM job script for running HPC Drug Screening on a cluster.
-
-Usage:
-    sbatch run_screening.slurm
-"""
-
 #!/bin/bash
+# Example SLURM job script for running HPC Drug Screening on a cluster.
+#
+# Usage:
+#     sbatch run_screening.slurm
+#
 #SBATCH --job-name=drug-screening
 #SBATCH --nodes=4
 #SBATCH --ntasks-per-node=8
