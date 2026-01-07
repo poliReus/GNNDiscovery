@@ -1,0 +1,25 @@
+# Core dependencies
+torch>=2.0.0
+torch-geometric>=2.3.0
+mpi4py>=3.1.0
+
+# Molecular processing
+rdkit>=2023.3.1
+
+# Data processing
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Utilities
+tqdm>=4.65.0
+
+# Optional: for specific PyG functionality
+torch-scatter>=2.1.0
+torch-sparse>=0.6.17
+torch-cluster>=1.6.1
+
+# Development dependencies (optional)
+pytest>=7.3.0
+black>=23.3.0
+flake8>=6.0.0
+pylint>=2.17.0
